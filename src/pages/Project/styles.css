@@ -1,0 +1,16 @@
+@keyframes floating {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .character {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-name: floating;
+  }
