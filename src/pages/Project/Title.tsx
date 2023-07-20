@@ -32,7 +32,7 @@ return (
                 key={index}
                 className="character"
                 style={{
-                    animationDelay: `${0.5 + index * 0.05}s`,
+                    animationDelay: `${0.2 + index * 0.05}s`,
                     animationDuration: "0.5s",
                 }}
             >
