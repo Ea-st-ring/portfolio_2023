@@ -5,7 +5,7 @@ import {ReactComponent as Record} from './assets/record.svg';
 import turntable from './assets/turntable.png';
 import lp_group from './assets/lp_group.svg';
 import { useNavigate } from 'react-router-dom';
-
+import Circle from './Circle';
 
 const Main = () => {
 
@@ -70,6 +70,7 @@ const Main = () => {
             >
                 <TurnTable/>
                 <LPGroup src={lp_group}/>
+                <Circle/>
             </div>
             
         </div>
@@ -107,36 +108,22 @@ const PlayerWrapper = styled.div<PlayerWrapperProps>`
 
 `;
 
-
-
-
-
-const Wrapper = styled.div`
-    position: absolute;
-    margin-top: 98px;
-    width: 1169px;
-    height: 886px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.65);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
-    backdrop-filter: blur(2px);
-`;
-
 const TurnTable = styled.div`
     background-image: url(${turntable});
+    background-size: cover;
     width: 1169px;
-    height: 886px;
+    height: 682px;
     position: absolute;
     z-index: -1;
+    top:40px;
     left: 135px;
 `
 
 const LPGroup = styled.img`
-    width: 1031px;
-    height: 875px;
+    width: 710px;
+    height: 603px;
     position: absolute;
-    left: 203px;
+    left: 433px;
     flex-shrink: 0;
 `
 
