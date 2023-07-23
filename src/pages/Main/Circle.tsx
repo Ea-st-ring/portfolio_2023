@@ -14,8 +14,8 @@ const ImageCircle: React.FC<ImageCircleProps> = ({images}) => {
 
     const [imageStyles, setImageStyles] = useState(
         images.map(() => ({
-            left: 590,
-            top: 505,
+            left: 695,
+            top: 375,
         }))
     );
 
@@ -28,15 +28,17 @@ const ImageCircle: React.FC<ImageCircleProps> = ({images}) => {
 
     const calculateImagePosition = (index : number) => {
       const angle = (2 * Math.PI * index + 19) / images.length // 이미지마다 각도를 분배
-      const x = 610 + 225 * Math.cos(angle) // 원 중심의 x 좌표
-      const y = 505 + 225 * Math.sin(angle) // 원 중심의 y 좌표
+      const x = 710 + 225 * Math.cos(angle) // 원 중심의 x 좌표
+      const y = 385 + 225 * Math.sin(angle) // 원 중심의 y 좌표
     return { position: 'absolute', left: x, top: y}
     }
     
     return (
         <Container>
             <BigCircle>
-                {images.map((imageSrc : string, index : number) => (
+                
+            </BigCircle>
+            {images.map((imageSrc : string, index : number) => (
                 <Image
                     key={index}
                     src={imageSrc}
@@ -46,7 +48,6 @@ const ImageCircle: React.FC<ImageCircleProps> = ({images}) => {
                     }
                 />
                 ))}
-            </BigCircle>
         </Container>
     )
 }
@@ -94,15 +95,17 @@ const BigCircle = styled.div`
     width: 1200px;
     height: 1200px;
     border-radius: 50%;
-    
     overflow: hidden;
 `
 
+
 const Image = styled.img`
     position: absolute;
+    
+
     width: 60px;
     height: 60px;
-    transition: all 0.2s;
+    transition: all 0.2s ease-in;
     &:hover{
         transform: scale(1.1);
     }
