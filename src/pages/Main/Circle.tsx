@@ -36,18 +36,6 @@ const ImageCircle: React.FC<ImageCircleProps> = ({outImages,inImages}) => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    // useEffect(() => {
-    //     const timer = setTimeout(() => {
-    //         setOutImageStyles(outImages
-    //             .map((_, index) => calculateImagePosition(index, outCenterX, outCenterY, outRadius , outAngleNum))
-    //         );
-    //         setInImageStyles(inImages
-    //             .map((_, index) => calculateImagePosition(index, inCenterX, inCenterY, inRadius, InAngleNum))
-    //         );
-    //     }, 300);
-    //     return () => clearTimeout(timer);
-    // }, [outImages, inImages]);
-
     useEffect(() => {
         if (currentIndex < outImages.length) {
             const timer = setTimeout(() => {
@@ -80,6 +68,7 @@ const ImageCircle: React.FC<ImageCircleProps> = ({outImages,inImages}) => {
     return { position: 'absolute', left: x, top: y}
     }
     
+
     return (
         <Container>
             <BigCircle>
@@ -108,7 +97,6 @@ const ImageCircle: React.FC<ImageCircleProps> = ({outImages,inImages}) => {
             <Redux
             src={'https://velog.velcdn.com/images/ea_st_ring/post/494206ee-93a9-45c7-a9c4-e6372bdfdaad/image.png'}
             />
-
         </Container>
     )
 }
@@ -122,7 +110,6 @@ export default function Circle() {
     const ts_img = 'https://velog.velcdn.com/images/ea_st_ring/post/cc7ca85b-bf11-4510-8ba5-d13e6069008e/image.png';
     const no_img = 'https://velog.velcdn.com/images/ea_st_ring/post/94fe4e82-414e-4786-92ac-d729e9f21ae9/image.png';
     const outImages = [
-      // 이미지 URL들
         react_img,
         ts_img,
         js_img,
@@ -150,7 +137,6 @@ export default function Circle() {
         gitHub_img,
     ]
 
-
     return <ImageCircle outImages={outImages} inImages={inImages}/>
 }
 
@@ -159,7 +145,6 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 `
 const BigCircle = styled.div`
     display: flex;
@@ -167,7 +152,6 @@ const BigCircle = styled.div`
     align-items: center;
     position: relative;
     width: 1200px;
-    height: 1200px;
     border-radius: 50%;
     overflow: hidden;
 `
