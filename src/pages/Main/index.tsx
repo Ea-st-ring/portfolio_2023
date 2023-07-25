@@ -1,5 +1,4 @@
 import React, { useState, useEffect} from 'react';
-import ReactPlayer from 'react-player';
 import { styled } from 'styled-components';
 import {ReactComponent as Record} from './assets/record.svg';
 import turntable from './assets/turntable.png';
@@ -16,6 +15,7 @@ const Main = () => {
 
     const updatePosition = () => {
         const viewportWidth = window.innerWidth;
+        
         const viewportHeight = window.innerHeight;
         const videoAspectRatio = 16 / 9;
         const viewportAspectRatio = viewportWidth / viewportHeight;
@@ -34,7 +34,6 @@ const Main = () => {
     useEffect(() => {
         updatePosition();
         window.addEventListener('resize', updatePosition);
-
         return () => {
             window.removeEventListener('resize', updatePosition);
         };
@@ -49,16 +48,10 @@ const Main = () => {
         <div style={{
             display:'flex',
             justifyContent:'center',
+            // maxHeight: `${window.innerHeight}`,
+            height:'100vh',
                     }}>
-            <PlayerWrapper top={top} left={left}>
-                <ReactPlayer
-                    className="react-player"
-                    url={process.env.PUBLIC_URL + '/videos/main-video.mp4'}
-                    
-                    muted
-                    loop
-                />
-            </PlayerWrapper>
+            <Background width={`${window.innerWidth}px`} height={`${window.innerHeight}px`}/>
             <RecordIcon 
                 className='record'
                 onClick={goToProject}
@@ -72,45 +65,26 @@ const Main = () => {
                 <LPGroup src={lp_group}/>
                 <Circle/>
             </div>
-            
         </div>
     );
 };
 
 
 
-interface PlayerWrapperProps {
-    top:number;
-    left:number;
-}
-
-const PlayerWrapper = styled.div<PlayerWrapperProps>`
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    
-    overflow: hidden;
-
-.react-player {
+const Background = styled.div<{width? : string, height? : string}>`
+    /* background-image: url('https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png'); */
+    background-image: url('https://velog.velcdn.com/images/ea_st_ring/post/7a961054-c601-452e-8ba8-2006f82fa08c/image.png');
+    background-size: cover;
+    width: ${(props) => props.width || '100%'};
+    height: ${(props) => props.height || '100%'};
     position: absolute;
-    width: 100vw;
-    height: 100vw !important; //계산을 위해 가로 비율 16:9
-    min-height: 100%;
-    min-width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-}
-
-`;
+    z-index: -1;
+    top:0;
+`
 
 const TurnTable = styled.div`
     background-image: url(${turntable});
-    background-size: cover;
+    /* background-size: cover; */
     width: 1169px;
     height: 682px;
     position: absolute;
